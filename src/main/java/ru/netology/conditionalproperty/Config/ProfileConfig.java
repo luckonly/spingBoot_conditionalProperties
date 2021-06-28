@@ -18,8 +18,7 @@ public class ProfileConfig {
     }
 
     @Bean
-    @ConditionalOnMissingBean(SystemProfile.class) //Этот вариант мне кажется более правильным, потому что будет работать даже если параметр отсутствует в properties
-//    @ConditionalOnProperty(prefix = "netology.profile", name = "dev", havingValue = "false")
+    @ConditionalOnProperty(prefix = "netology.profile", name = "dev", havingValue = "false", matchIfMissing = true)
     public SystemProfile getProductionProfile() {
         return new ProductionProfile();
     }
